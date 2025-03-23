@@ -4,6 +4,10 @@ public class Program
 {
     static void Main(string[] args)
     {
+        // Invariance     -  The type to be assigned and the type assigned must be the same. This means that there is no switch between Child (Derived) type and Parent (Base) type.
+        // Covariance     -  We can switch from Child (Derived) type to Parent (Base) type.
+        // Contravariance -  We can switch from Parent (Base) type to Child (Derived) type.
+
         Console.WriteLine("Hello, World!");
     }
 
@@ -24,6 +28,8 @@ public class Program
         object[] array = new string[3];
         array[0] = "";
         array[1] = 5; // RunTime Error
+
+        List<object> list = new List<string>(); // Compiler Error
 
         return array;
     }
