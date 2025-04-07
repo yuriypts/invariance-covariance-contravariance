@@ -6,6 +6,7 @@ public class Program
     {
         // Covariance -  We can switch from Child (Derived) type to Parent (Base) type.
         ICar<Car> car = new BMW();
+        ICar<BMW> car2 = new BMW();
 
         Console.WriteLine(car.Drive());
 
