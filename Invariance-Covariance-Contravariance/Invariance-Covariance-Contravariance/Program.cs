@@ -1,5 +1,19 @@
 ﻿namespace Invariance_Covariance_Contravariance;
 
+public interface ICustomListCovariance<out T> // Covariance
+{
+}
+
+public interface ICustomListContravariance<in T> // Contravariance
+{
+}
+
+// In or Out operators cannot be used on Class as Generic only nterfaces and delegates can use them.
+public class CustomList<out T>
+{
+
+};
+
 public abstract class Reset
 {
     public abstract void ResetData();
@@ -21,10 +35,11 @@ public class Volatility : Reset
     }
 }
 
+public class C { };
 public class Base { };
 public class Derived : Base
 {
-    public static explicit operator Derived(Base b)
+    public static explicit operator Derived(C b)
     {
         return new Derived();
     }
@@ -41,7 +56,14 @@ public class Program
         var test = new string("asd");
         object test1 = new string("asd");
 
-        //Derived derived = (Derived)"asd";
+        //Base base1 = new Derived();
+        //Derived derived = new Derived();
+        //C base2 = new C();
+        //Derived testq = (Derived)base2; // Compiler Error
+
+        List<Forward> rest = new List<Forward>();
+
+        IEnumerable<Reset> enumerable = rest;
 
         List<Reset> objToReset = new List<Reset>
         {
@@ -63,7 +85,7 @@ public class Program
         string value1 = "value1";
         object value2 = "value2"; 
                                   
-        //string value3 = value2; // Compiler Error
+        string value3 = value2; // Compiler Error
 
         return value1;
     }
